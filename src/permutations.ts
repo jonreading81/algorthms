@@ -1,5 +1,5 @@
 export const permutations = (arr: number[]): number[][] => {
-  if (arr.length === 0) {
+  if (arr.length < 2) {
     return [arr];
   }
 
@@ -9,7 +9,9 @@ export const permutations = (arr: number[]): number[][] => {
 
   return permsWithoutFirst.reduce<number[][]>((result, perm) => {
     for (let i = 0; i <= perm.length; i++) {
-      result.push([...perm.slice(0, i), firstElement, ...perm.slice(i)]);
+      const permWithFirst = perm.slice(0);
+      permWithFirst.splice(i, 0, firstElement);
+      result.push(permWithFirst);
     }
 
     return result;

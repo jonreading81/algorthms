@@ -1,4 +1,6 @@
-export const insertionSort = (arr: number[]) => {
+export const insertionSort = (_arr: number[]) => {
+  const arr = _arr.slice(0);
+
   for (let i = 1; i < arr.length; i++) {
     let numberToInsert = arr[i];
     let j = i - 1;

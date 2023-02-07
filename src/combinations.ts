@@ -1,6 +1,6 @@
 export const combinations = (arr: number[]): number[][] => {
   if (arr.length === 0) {
-    return [arr];
+    return [[]];
   }
 
   const firstElement = arr[0];
@@ -9,13 +9,7 @@ export const combinations = (arr: number[]): number[][] => {
 
   const combinationWithFirstElement = combinationWithoutFirstElement.reduce<
     number[][]
-  >(
-    (combinations, combination) => [
-      ...combinations,
-      [...combination, firstElement],
-    ],
-    []
-  );
+  >((result, combination) => [...result, [...combination, firstElement]], []);
 
-  return [...combinationWithoutFirstElement, ...combinationWithFirstElement];
+  return combinationWithoutFirstElement.concat(combinationWithFirstElement);
 };

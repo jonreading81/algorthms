@@ -1,6 +1,2 @@
-export const staircaseProblem = (n: number): number => {
-  if (n < 4) {
-    return n;
-  }
-  return staircaseProblem(n - 1) + staircaseProblem(n - 2);
-};
+export const staircaseProblem = (n: number): number =>
+  n < 4 ? n : staircaseProblem(n - 1) + staircaseProblem(n - 2);

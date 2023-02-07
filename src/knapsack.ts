@@ -36,12 +36,12 @@ const getSolutions = (items: Item[], maxWeight: number): number[] => {
   const currentSolution: number[] = [];
 
   for (let weight = 0; weight <= maxWeight; weight++) {
-    const prevMaxValue = previousSoultion?.[weight] ?? 0;
+    const prevMaxValue = previousSoultion[weight] ?? 0;
     currentSolution.push(
       currentItem.weight > weight
         ? prevMaxValue
         : Math.max(
-            (previousSoultion?.[weight - currentItem.weight] ?? 0) +
+            (previousSoultion[weight - currentItem.weight] ?? 0) +
               currentItem.value,
             prevMaxValue
           )
