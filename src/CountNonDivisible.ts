@@ -15,7 +15,7 @@ const getDivisors = (n: number) => {
   return divisors;
 };
 
-const getValuesCount = (values: number[]) =>
+const getOccurances = (values: number[]) =>
   values.reduce<{[key: string]: number}>((obj, value) => {
     const key = String(value);
     obj[key] = obj[key] ? obj[key] + 1 : 1;
@@ -24,7 +24,7 @@ const getValuesCount = (values: number[]) =>
   }, {});
 
 export function CountNonDivisible(values: number[]) {
-  const objValuesCount = getValuesCount(values);
+  const occurances = getOccurances(values);
 
   return values.map(
     (value, index) =>
@@ -32,9 +32,9 @@ export function CountNonDivisible(values: number[]) {
       getDivisors(value).reduce(
         (count, divisor) =>
           divisor !== value
-            ? count + (objValuesCount[String(divisor)] || 0)
+            ? count + (occurances[String(divisor)] || 0)
             : count,
-        objValuesCount[String(value)]
+        occurances[String(value)]
       )
   );
 }
